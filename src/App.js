@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import './App.css'
+import { Route, Routes } from 'react-router-dom'
+import Menu from './components/Menu';
+import AddPost from './components/AddPost';
+import PostList from './components/PostList';
+import Explore from './components/Explore';
+
 
 function App() {
+  const [userId, setUserId] = useState("");
+
+  const getUserIdHandler = (id) => {
+    console.log("The id of the post to be edited : ", id);
+    setUserId(id);
+
+
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Menu />
+      <Routes>
+        <Route exact path='/' element={<><AddPost id={userId} setUserId={setUserId} />
+          {<PostList getUserId={getUserIdHandler} />}
+        </>
+        }>
+        </Route>
+        <Route exact path='/explore' element={<Explore />}></Route>
+      </Routes>
+    </>
   );
 }
 
