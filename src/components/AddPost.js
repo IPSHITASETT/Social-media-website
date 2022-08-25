@@ -89,7 +89,7 @@ const AddPost = ({ id, setUserId }) => {
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                         <Form.Label id="userHashtag">Hashtag</Form.Label>
-                        <Form.Control as="textarea" rows={3} placeholder="Add your favourite hashtag here..." value={hashtag} onChange={(e) => setHashtag(e.target.value)} />
+                        <Form.Control as="textarea" rows={3} placeholder="Add your favourite hashtag here..." value={hashtag} onChange={(e) => setHashtag(e.target.value.split(','))} />
                     </Form.Group>
                     <div>
                         <Button variant="primary" type="Submit">
